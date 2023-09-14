@@ -77,4 +77,9 @@ public class Play_Button : MonoBehaviour {
         //.SetCallback((result, shareTarget) => Debug.Log("Share result: " + result + ", selected app: " + shareTarget))
 
     }
+
+    public void KofiLink()
+    {
+        Application.OpenURL("https://ko-fi.com/divijmanik");
+    }
 }

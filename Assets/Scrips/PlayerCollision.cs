@@ -18,7 +18,7 @@ public class PlayerCollision : MonoBehaviour
         if(collision.transform.CompareTag("Ball"))
         {
             //collision.transform.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
-            PlayerController.Instance.PlayerScore();
+            PlayerController.Instance.PlayerScore(gameObject);
         }
     }
 }

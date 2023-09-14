@@ -52,14 +52,16 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(Wail());
     }
 
-    public void PlayerScore()
+    GameObject lastPaddle;
+
+    public void PlayerScore(GameObject g)
     {
-        //if (Score.instance.currenScore <= 3)
-        //{
-        //    GameObject shootEffectObj = Instantiate(ShootEffectPrefabHexagon, transform.position, Quaternion.identity);
-        //    shootEffectObj.transform.GetChild(0).GetComponent<SpriteRenderer>().color = UnityEngine.Color.HSVToRGB(hueValue, 0.6f, 0.8f);
-        //    Destroy(shootEffectObj, 1.0f);
-        //}
+        if (Score.instance.currenScore % 5 == 0)
+        {
+            GameObject shootEffectObj = Instantiate(ShootEffectPrefabSquare, transform.position, Quaternion.identity);
+            shootEffectObj.transform.GetChild(0).GetComponent<SpriteRenderer>().color = UnityEngine.Color.HSVToRGB(hueValue, 0.6f, 0.8f);
+            Destroy(shootEffectObj, 1.0f);
+        }
         //else if (Score.instance.currenScore >= 4 && FindObjectOfType<Score>().currenScore <= 10)
         //{
 
@@ -71,13 +73,15 @@ public class PlayerController : MonoBehaviour
         //    Destroy(shootEffectObj, 1.0f);
         //}
 
-        GameObject shootEffectObj = Instantiate(ShootEffectPrefabSquare, transform.position, Quaternion.identity);
-        shootEffectObj.transform.GetChild(0).GetComponent<SpriteRenderer>().color = UnityEngine.Color.HSVToRGB(hueValue, 0.6f, 0.8f);
-        Destroy(shootEffectObj, 1.0f);
+        //GameObject shootEffectObj = Instantiate(ShootEffectPrefabSquare, transform.position, Quaternion.identity);
+        //shootEffectObj.transform.GetChild(0).GetComponent<SpriteRenderer>().color = UnityEngine.Color.HSVToRGB(hueValue, 0.6f, 0.8f);
+        //Destroy(shootEffectObj, 1.0f);
         
 
-        
-        ChangeBackgroundColor();
+        if(g != lastPaddle)
+            ChangeBackgroundColor();
+
+        lastPaddle = g;
 
         Score.instance.AddScore();
         if (useVib == 1)
